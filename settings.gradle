@@ -1,0 +1,11 @@
+rootProject.name = 'spring-cloud-study'
+
+include("spring-cloud-security")
+
+include("spring-cloud-eureka-server")
+
+include("spring-cloud-eureka-producer")
+
+include("spring-cloud-eureka-client")
+
+include("spring-cloud-config-center")

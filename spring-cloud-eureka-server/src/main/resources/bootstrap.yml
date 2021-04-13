@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    active: dev
+---
+spring:
+  profiles: dev
+  application:  # 应用名字，eureka 会根据它作为服务id
+    name: spring-cloud-eureka-server
+  cloud:
+    config:
+      uri: http://localhost:8888
+      label: master
+      profile: dev

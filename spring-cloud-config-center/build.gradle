@@ -1,0 +1,5 @@
+project(":spring-cloud-config-center"){
+    dependencies {
+        implementation 'org.springframework.cloud:spring-cloud-config-server'
+    }
+}

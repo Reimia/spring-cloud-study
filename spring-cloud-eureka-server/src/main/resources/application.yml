@@ -1,0 +1,10 @@
+server:  # 服务端口
+  port: 8761
+management:
+  endpoint:
+    shutdown:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"

@@ -1,0 +1,68 @@
+buildscript {
+    repositories {
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:2.3.1.RELEASE"
+    }
+}
+
+plugins {
+    id 'org.springframework.boot' version '2.4.1'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'java'
+}
+
+group = 'com.reimia'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven'
+    apply plugin: 'io.spring.dependency-management'
+
+    dependencyManagement {
+        imports {
+            mavenBom 'org.springframework.boot:spring-boot-starter-parent:2.3.1.RELEASE'
+            mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Hoxton.RELEASE'
+        }
+    }
+
+    dependencies {
+        implementation 'org.springframework.cloud:spring-cloud-commons'
+        implementation 'org.springframework.cloud:spring-cloud-starter-config'
+        implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+
+        compileOnly 'org.projectlombok:lombok'
+        testCompileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+        testAnnotationProcessor 'org.projectlombok:lombok'
+    }
+
+    task cleanBuildOutDir(type: Delete) {
+        delete "${projectDir}/build"
+        delete "${projectDir}/out"
+    }
+}
+
+dependencies {
+    implementation project('spring-cloud-security')
+    implementation project('spring-cloud-eureka-server')
+    implementation project('spring-cloud-eureka-producer')
+    implementation project('spring-cloud-eureka-client')
+    implementation project('spring-cloud-config-center')
+}
+
+test {
+    useJUnitPlatform()
+}
+

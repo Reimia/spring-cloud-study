@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: config-server  # 应用名称
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: [classpath:/config-repo]
+#        git:
+#          uri: https://github.com/Reimia/config-repo #配置文件所在仓库
+#          username: 2944136662@qq.com
+#          password: zsy19970715
+#          default-label: master #配置文件分支
+#          force-pull: true
+#          timeout: 50
