@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 /**
  * @author Reimia
  */
-@FeignClient(value = "service-hi")
+@FeignClient(value = "service-hi",fallback = OrderFallbackService.class)
 public interface OrderFeignClient {
 
     @GetMapping("/hi/{name}")
